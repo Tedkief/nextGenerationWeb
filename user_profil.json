@@ -1,0 +1,14 @@
+{
+    "user1": {
+        "name": "John",
+        "preference": ["cheese", "cheese2"]
+    },
+    "user2": {
+        "name": "Jonas",
+        "preference": ["cheese", "cheese2"]
+    },
+    "user3": {
+        "name": "Juliette",
+        "preference": ["cheese", "cheese2"]
+    }
+}
