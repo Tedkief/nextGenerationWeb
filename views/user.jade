@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Suggestion
+  each suggestion in suggestions
+    img(src=suggestion.picture)
+    p= suggestion.name
+    a(href=suggestion.cheese)= suggestion.cheese
+    p
+    br
