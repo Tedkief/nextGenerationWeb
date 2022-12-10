@@ -1,0 +1,17 @@
+user is class
+user has name 
+user has country
+user has age
+
+name is string
+age is int
+country is class
+
+fromage is class
+fromage has name
+fromage has(maybe) age
+fromage has countryProduction
+fromage has animalProduction
+
+countryProduction is class
+animalProduction is class
