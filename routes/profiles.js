@@ -4,27 +4,27 @@ const fs = require('fs')
 const $rdf = require('rdflib')
 
 // Get users
-const turtleString = fs.readFileSync('users.ttl').toString()
+const turtleString = fs.readFileSync('users.rdf').toString()
 const store = $rdf.graph()
 
 $rdf.parse(
     turtleString,
     store,
     "http://nextgenerationweb.com/owl/users",
-    "text/turtle"
+    "application/rdf+xml"
 )
 
 const stringQuery = `
 	SELECT
 		?id
 		?name
-    ?animal_milk
+        ?animal_milk
 		?country_residence
 	WHERE {
 		?user a <http://nextgenerationweb.com/owl/users#User> .
 		?user <http://nextgenerationweb.com/owl/users#id> ?id .
 		?user <http://nextgenerationweb.com/owl/users#name> ?name .
-    ?user <http://nextgenerationweb.com/owl/users#animal_milk> ?animal_milk .
+        ?user <http://nextgenerationweb.com/owl/users#animal_milk> ?animal_milk .
 		?user <http://nextgenerationweb.com/owl/users#country_residence> ?country_residence .
 	}
 `
