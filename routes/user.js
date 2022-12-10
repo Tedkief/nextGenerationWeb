@@ -6,7 +6,7 @@ const client = new ParsingClient({
   endpointUrl: 'https://dbpedia.org/sparql'
 })
 
-router.get('/:querytype', async function (req, res, next) {
+router.get('/:milk-:country', async function (req, res, next) {
   var query = `
   PREFIX dbo: <http://dbpedia.org/ontology/>
   PREFIX dbc: <http://dbpedia.org/resource/Category:>
@@ -14,23 +14,9 @@ router.get('/:querytype', async function (req, res, next) {
   SELECT DISTINCT ?cheese ?name ?picture
   WHERE {
     ?cheese ?a dbo:Cheese;
-    dbo:thumbnail ?picture;`
-
-  if (req.params.querytype == "goat_lover") {
-    query = query + `
-      dct:subject <http://dbpedia.org/resource/Category:Goat's-milk_cheeses>;
-      `
-  } else if (req.params.querytype == "french_lover") {
-    query = query + `
-      dct:subject <http://dbpedia.org/resource/Category:French_cheeses>;
-      `
-  } else {
-    query = query + `
-      dct:subject <http://dbpedia.org/resource/Category:Cow's-milk_cheeses>;
-      dct:subject <http://dbpedia.org/resource/Category:French_cheeses>;
-      `
-  }
-  query += `
+    dbo:thumbnail ?picture;
+    dct:subject <http://dbpedia.org/resource/Category:${req.params.milk}'s-milk_cheeses>;
+    dct:subject <http://dbpedia.org/resource/Category:${req.params.country}_cheeses>;
     rdfs:label ?name
     FILTER langMatches(lang(?name),"en")
     } LIMIT 20

@@ -2,17 +2,17 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:ns0="http://nextgenerationweb.com/owl/users#">
 
-  <rdf:Description rdf:about="http://nextgenerationweb.com/owl/users#goatlover">
+  <rdf:Description rdf:about="http://nextgenerationweb.com/owl/users#frenchgoatlover">
     <rdf:type rdf:resource="http://nextgenerationweb.com/owl/users#User"/>
-    <ns0:id>goat_lover</ns0:id>
-    <ns0:name>Goat Lover</ns0:name>
+    <ns0:id>french_goat_lover</ns0:id>
+    <ns0:name>French Goat Lover</ns0:name>
     <ns0:animal_milk>Goat</ns0:animal_milk>
     <ns0:country_residence>French</ns0:country_residence>
   </rdf:Description>
 
-  <ns0:User rdf:about="http://nextgenerationweb.com/owl/users#cowlover">
-    <ns0:id>cow_lover</ns0:id>
-    <ns0:name>Cow Lover</ns0:name>
+  <ns0:User rdf:about="http://nextgenerationweb.com/owl/users#swedishcowlover">
+    <ns0:id>swedish_cow_lover</ns0:id>
+    <ns0:name>Swedish Cow Lover</ns0:name>
     <ns0:animal_milk>Cow</ns0:animal_milk>
     <ns0:country_residence>Swedish</ns0:country_residence>
   </ns0:User>

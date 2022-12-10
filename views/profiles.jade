@@ -3,6 +3,6 @@ extends layout
 block content
   h1 Profiles
   each profile in profiles
-    a(href="/user/" + profile.id)= profile.name
+    a(href="/user/" + profile.animal_milk + "-" + profile.country_residence)= profile.name
     br
 
