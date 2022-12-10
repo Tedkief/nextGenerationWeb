@@ -1,0 +1,19 @@
+@prefix : <http://nextgenerationweb.com/owl/users#> .
+
+:goatlover a :User;
+	:id "goat_lover";
+	:name "Goat Lover";
+    :animal_milk "Goat";
+    :country_residence "French" .
+
+:cowlover a :User;
+	:id "cow_lover";
+	:name "Cow Lover";
+    :animal_milk "Cow";
+    :country_residence "Swedish" .
+
+:frenchcowlover a :User;
+	:id "french_cow_lover";
+	:name "French Cow Lover";
+    :animal_milk "Cow";
+    :country_residence "French" .

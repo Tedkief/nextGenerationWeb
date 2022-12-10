@@ -15,11 +15,11 @@ router.get('/:querytype', async function (req, res, next) {
   WHERE {
     ?cheese ?a dbo:Cheese;`
 
-  if (req.params.querytype == "goatlover") {
+  if (req.params.querytype == "goat_lover") {
     query = query + `
       dct:subject <http://dbpedia.org/resource/Category:Goat's-milk_cheeses>;
       `
-  } else if (req.params.querytype == "frenchlover") {
+  } else if (req.params.querytype == "french_lover") {
     query = query + `
       dct:subject <http://dbpedia.org/resource/Category:French_cheeses>;
       `

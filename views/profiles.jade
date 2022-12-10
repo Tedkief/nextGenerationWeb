@@ -2,8 +2,7 @@ extends layout
 
 block content
   h1 Profiles
-  a(href="/user/goatlover") GoatLover
-  p
-  a(href="/user/frenchlover") FrenchLover
-  p
-  a(href="/user/cowfrenchlover") CowFrenchLover
+  each profile in profiles
+    a(href="/user/" + profile.id)= profile.name
+    p
+
