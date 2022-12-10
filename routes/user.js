@@ -1,43 +1,55 @@
 var express = require('express');
 var router = express.Router();
-const QueryEngine = require('@comunica/query-sparql').QueryEngine;
-const myEngine = new QueryEngine();
+const ParsingClient = require('sparql-http-client/ParsingClient')
 
-var beginQuery = `
-PREFIX dbo: <http://dbpedia.org/ontology/>
-PREFIX dbc: <http://dbpedia.org/resource/Category:>
-PREFIX dct: <http://purl.org/dc/terms/>
-SELECT DISTINCT ?cheese ?name
-WHERE {
-  ?cheese ?a dbo:Cheese;`
-
-var endQuery = `    
-  rdfs:label ?name
-  FILTER langMatches(lang(?name),"en")
-} LIMIT 20`
+const client = new ParsingClient({
+  endpointUrl: 'https://dbpedia.org/sparql'
+})
 
 router.get('/:querytype', async function (req, res, next) {
-  console.log(req.params.querytype)
+  var query = `
+  PREFIX dbo: <http://dbpedia.org/ontology/>
+  PREFIX dbc: <http://dbpedia.org/resource/Category:>
+  PREFIX dct: <http://purl.org/dc/terms/>
+  SELECT DISTINCT ?cheese ?name
+  WHERE {
+    ?cheese ?a dbo:Cheese;`
+
   if (req.params.querytype == "goatlover") {
-    bindingsStream = await myEngine.queryBindings(
-      beginQuery + "dct:subject <http://dbpedia.org/resource/Category:Goat's-milk_cheeses>;" + endQuery, {
-      sources: ['http://fragments.dbpedia.org/2015/en'],
-    });
+    query = query + `
+      dct:subject <http://dbpedia.org/resource/Category:Goat's-milk_cheeses>;
+      `
   } else if (req.params.querytype == "frenchlover") {
-    bindingsStream = await myEngine.queryBindings(
-      beginQuery + "dct:subject <http://dbpedia.org/resource/Category:French_cheeses>;" + endQuery, {
-      sources: ['http://fragments.dbpedia.org/2015/en'],
-    });
+    query = query + `
+      dct:subject <http://dbpedia.org/resource/Category:French_cheeses>;
+      `
   } else {
-    bindingsStream = await myEngine.queryBindings(
-      beginQuery + "dct:subject <http://dbpedia.org/resource/Category:Cow's-milk_cheeses>;" +
-      "dct:subject <http://dbpedia.org/resource/Category:French_cheeses>;" + endQuery, {
-      sources: ['http://fragments.dbpedia.org/2015/en'],
-    });
+    query = query + `
+      dct:subject <http://dbpedia.org/resource/Category:Cow's-milk_cheeses>;
+      dct:subject <http://dbpedia.org/resource/Category:French_cheeses>;
+      `
   }
-  const bindings = await bindingsStream.toArray();
-  res.send(bindings.flatMap(
-    value => value.get("name").value))
+  query += `
+    rdfs:label ?name
+    FILTER langMatches(lang(?name),"en")
+    } LIMIT 20
+  `
+  var names = []
+  var cheeses = []
+
+  client.query.select(query).then(rows => {
+    // console.log(rows)
+
+    rows.forEach(row => {
+      names.push(row.name.value)
+      cheeses.push(row.cheese.value)
+    })
+    res.send(names)
+
+  }).catch(error => {
+    console.log(error)
+  })
+
 });
 
 module.exports = router;
