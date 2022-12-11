@@ -1,6 +1,6 @@
 # nextGenerationWeb
 
-## Instalation
+## Installation
 Run this command in your terminal install all the packages:
 ```
 npm install
