@@ -3,7 +3,7 @@ var router = express.Router();
 const fs = require('fs')
 const $rdf = require('rdflib')
 
-// Get users
+// Get users RDF
 const turtleString = fs.readFileSync('users.rdf').toString()
 const store = $rdf.graph()
 
@@ -14,6 +14,7 @@ $rdf.parse(
     "application/rdf+xml"
 )
 
+// Query to RDF for get all User profile 
 const stringQuery = `
 	SELECT
 		?id
@@ -40,9 +41,9 @@ const usersRDF = store.querySync(query).map(
     }
 )
 
-/* GET home page. */
+// GET profile page
 router.get('/', function (req, res, next) {
-    res.render('profiles', { title: 'Express', profiles: usersRDF });
+    res.render('profiles', { title: 'Profile', profiles: usersRDF });
 });
 
 module.exports = router;
