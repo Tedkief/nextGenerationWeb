@@ -2,6 +2,9 @@ extends layout
 
 block content
   h1 Profiles
+  a(href="/") Go back to Home
+  p  
+  br
   each profile in profiles
     a(href="/user/" + profile.animal_milk + "-" + profile.country_residence)= profile.name
     br

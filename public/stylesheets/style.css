@@ -6,3 +6,27 @@ body {
 a {
   color: #00B7FF;
 }
+
+.suggestionContent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+} 
+
+img {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.leftContent {
+  width: 300px;
+}
+
+.middleContent {
+  min-width: 100px;
+  max-width: 400px;
+  margin-left: 30px;
+}

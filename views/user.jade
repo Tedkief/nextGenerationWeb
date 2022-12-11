@@ -2,9 +2,13 @@ extends layout
 
 block content
   h1 Suggestion
+  a(href="/profiles") Go back to Profiles
+  p
   each suggestion in suggestions
-    img(src=suggestion.picture)
-    p= suggestion.name
-    a(href=suggestion.cheese)= suggestion.cheese
-    p
+    div(class="suggestionContent")
+      div(class="leftContent")
+        img(src=suggestion.picture)
+      div(class="middleContent")
+        p= suggestion.name
+        a(href=suggestion.cheese)= suggestion.cheese
     br

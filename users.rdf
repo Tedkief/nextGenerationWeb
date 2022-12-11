@@ -10,6 +10,13 @@
     <ns0:country_residence>French</ns0:country_residence>
   </rdf:Description>
 
+  <ns0:User rdf:about="http://nextgenerationweb.com/owl/users#frenchcowlover">
+    <ns0:id>french_cow_lover</ns0:id>
+    <ns0:name>French Cow Lover</ns0:name>
+    <ns0:animal_milk>Cow</ns0:animal_milk>
+    <ns0:country_residence>French</ns0:country_residence>
+  </ns0:User>
+
   <ns0:User rdf:about="http://nextgenerationweb.com/owl/users#swedishcowlover">
     <ns0:id>swedish_cow_lover</ns0:id>
     <ns0:name>Swedish Cow Lover</ns0:name>
@@ -17,11 +24,18 @@
     <ns0:country_residence>Swedish</ns0:country_residence>
   </ns0:User>
 
-  <ns0:User rdf:about="http://nextgenerationweb.com/owl/users#frenchcowlover">
-    <ns0:id>french_cow_lover</ns0:id>
-    <ns0:name>French Cow Lover</ns0:name>
+  <ns0:User rdf:about="http://nextgenerationweb.com/owl/users#americancowlover">
+    <ns0:id>american_cow_lover</ns0:id>
+    <ns0:name>American Cow Lover</ns0:name>
     <ns0:animal_milk>Cow</ns0:animal_milk>
-    <ns0:country_residence>French</ns0:country_residence>
+    <ns0:country_residence>American</ns0:country_residence>
+  </ns0:User>
+
+  <ns0:User rdf:about="http://nextgenerationweb.com/owl/users#italiangoatlover">
+    <ns0:id>italian_goat_lover</ns0:id>
+    <ns0:name>Italian Goat Lover</ns0:name>
+    <ns0:animal_milk>Goat</ns0:animal_milk>
+    <ns0:country_residence>Italian</ns0:country_residence>
   </ns0:User>
 
 </rdf:RDF>
